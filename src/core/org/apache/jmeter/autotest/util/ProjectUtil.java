@@ -2,6 +2,7 @@ package org.apache.jmeter.autotest.util;
 
 import org.apache.jmeter.autotest.Project;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,10 @@ public class ProjectUtil {
     }
 
     private static List<Project> getAllProjectInfo() {
-        return null;
+        projectNames = new String[]{"project1", "project2", "project3"};
+        List<Project> projects = new ArrayList<>();
+        projects.add(new Project());
+        projects.add(new Project());
+        return projects;
     }
 }

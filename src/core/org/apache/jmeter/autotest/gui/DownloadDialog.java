@@ -126,11 +126,18 @@ public class DownloadDialog extends JDialog implements ActionListener, ChangeLis
             this.setVisible(false);
         } else if (source == downloadButton) {
             String projectName = projectList.getText();
-            Project currentProject = ProjectUtil.allProjects.stream().filter(project -> projectName.equals(project.getName())).findAny().get();
+            String projectId = "";
+            for (Project project : ProjectUtil.allProjects) {
+                if (projectName.equals(project.getName())){
+                    projectId = project.getProjectId();
+                    break;
+                }
+            }
+//            Project currentProject = ProjectUtil.allProjects.stream().filter(project -> projectName.equals(project.getName())).findAny().get();
             String username = usernameTF.getText();
             String password = passwordTF.getText();
             //TODO check user account and user permission
-            PermissionUtil.checkUser(username, password, currentProject.getProjectId());
+            PermissionUtil.checkUser(username, password, projectId);
 
 
         }
@@ -143,7 +150,7 @@ public class DownloadDialog extends JDialog implements ActionListener, ChangeLis
 
     @Override
     public void localeChanged(LocaleChangeEvent event) {
-
+        event.getSource();
     }
 
     private JButton createButton(String messageKey) {
